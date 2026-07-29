@@ -1,0 +1,8 @@
+[package]
+name = "password_strength_checker"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+# colored crate for colored output
+colored = "3"
