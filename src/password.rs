@@ -1,9 +1,12 @@
 // Debug derive allows printing of Token values with {:?}
 // Clone derive allows cloning of Password values
 #[derive(Debug, Clone)]
+// Password struct
 pub struct Password<'a>
 {
+    // password slice
     password:&'a str,
+    // password size
     size:usize,
 }
 
