@@ -11,6 +11,9 @@ mod analysis;
 use crate::analysis::Info;
 // import score
 mod score;
+use crate::score::Score;
+// import report
+mod report;
 
 fn main()
 {
@@ -27,14 +30,16 @@ fn main()
         password.password(),
         format!("{} {}", "of length".bright_green(), password.size()));
     println!();
-
+    // store password info
     let info:Info = Info::new(&password);
-
-    println!("{}", "Info:".bright_blue());
-    println!("  {} {}", "- uppercase:".bright_green(), info.uppercase);
-    println!("  {} {}", "- lowercase:".bright_green(), info.lowercase);
-    println!("  {} {}", "- digits:".bright_green(), info.digits);
-    println!("  {} {}", "- special chars:".bright_green(), info.special_chars);
+    // store password score info
+    let score:Score = Score::new(&password, &info);
+    // print score report
+    report::pretty_score_report(&score);
+    // print new line
+    println!();
+    // print info report
+    report::pretty_info_report(&score, &info);
 }
 
 // reads a line from stdin and returns it as a String
