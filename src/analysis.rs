@@ -1,16 +1,17 @@
+// use Password
 use crate::password::Password;
 
 // store analysis results of a password
 pub struct Info
 {
     // contains uppercase letters
-    pub uppercase: bool,
+    uppercase: bool,
     // contains lowercase letters
-    pub lowercase: bool,
+    lowercase: bool,
     // contains digits
-    pub digits: bool,
+    digits: bool,
     // contains special characters
-    pub special_chars: bool,
+    special_chars: bool,
 }
 
 // construct on Analysis
@@ -100,4 +101,37 @@ impl Info
         // return false if no special characters found
         false
     }
+
+    // does have uppercase letters
+    pub fn has_uppercase(&self) -> bool
+    {
+        // return true if uppercase letters found
+        // false if not
+        self.uppercase
+    }
+
+    // does have lowercase letters
+    pub fn has_lowercase(&self) -> bool
+    {
+        // return true if lowercase letters found
+        // false if not
+        self.lowercase
+    }
+
+    // does have digits
+    pub fn has_digits(&self) -> bool
+    {
+        // return true if digits found
+        // false if not
+        self.digits
+    }
+
+    // does have special characters
+    pub fn has_special_chars(&self) -> bool
+    {
+        // return true if special characters found
+        // false if not
+        self.special_chars
+    }
+
 }
