@@ -2,7 +2,7 @@
 use colored::{ColoredString, Colorize};
 
 // use Score, Level
-use crate::score::{Score, Level};
+use crate::score::Score;
 // use Info
 use crate::analysis::Info;
 
