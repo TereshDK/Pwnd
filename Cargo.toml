@@ -6,3 +6,9 @@ edition = "2024"
 [dependencies]
 # colored crate for colored output
 colored = "3"
+# sha1 for hashing
+sha1 = "0.10"
+# reqwest for GET request
+reqwest = "0.13"
+# tokio for async
+tokio = { version = "1", features = ["full"] }
