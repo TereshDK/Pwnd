@@ -6,6 +6,7 @@ use crate::score::Score;
 // use Info
 use crate::analysis::Info;
 
+#[allow(dead_code)]
 // print score in formatted output
 pub fn score_report(score:&Score)
 {
@@ -43,13 +44,20 @@ pub fn pretty_score_report(score:&Score)
 // pretty print score
 fn pretty_score(label:&str, score:u8)
 {
+    // match label to print appropriately
     match label.to_lowercase().as_str()
     {
+        // print length score
         "length" => println!("{} ............ {}{}", label.bright_magenta(), "+".bright_red(), format!("{}", score).bright_green()),
+        // print lowercase score
         "lowercase" => println!("{} ......... {}{}", label.bright_magenta(), "+".bright_red(), format!("{}", score).bright_green()),
+        // print uppercase score
         "uppercase" => println!("{} ......... {}{}", label.bright_magenta(), "+".bright_red(), format!("{}", score).bright_green()),
+        // print digits score
         "digits" => println!("{} ............ {}{}", label.bright_magenta(), "+".bright_red(), format!("{}", score).bright_green()),
+        // print special chars score
         "special chars" => println!("{} ..... {}{}", label.bright_magenta(), "+".bright_red(), format!("{}", score).bright_green()),
+        // if none, do nothing
         _ => {}
     }
 }
