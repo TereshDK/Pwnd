@@ -59,7 +59,7 @@ impl Score
     fn score_length(password:&Password) -> u8
     {
         // match password size and assign score
-        match password.size()
+        match password.get_size()
         {
             // between 0-7 is 0 points
             0..=7 => 0,
@@ -168,6 +168,7 @@ impl Score
     // get total score
     pub fn get_total_score(&self) -> u8
     {
+        // return total password score
         self.length + self.uppercase +
         self.lowercase + self.digits +
         self.special_chars
@@ -176,12 +177,18 @@ impl Score
     // get password strength level
     pub fn get_strength_level(&self) -> Level
     {
+        // match based on total score and return password level
         match self.get_total_score()
         {
+            // password is weak
             0..=24 => Level::Weak,
+            // password is fair
             25..=49 => Level::Fair,
+            // password is strong
             50..=74 => Level::Strong,
+            // password is very strong
             75..=100 => Level::VeryStrong,
+            // no matches, default
             _ => Level::VeryStrong,
         }
     }
