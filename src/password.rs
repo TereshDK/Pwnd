@@ -34,14 +34,14 @@ impl<'a> Password<'a>
     }
 
     // size getter
-    pub fn size(&self) -> usize
+    pub fn get_size(&self) -> usize
     {
         // return password size
         self.size
     }
 
     // password getter
-    pub fn password(&self) -> &str
+    pub fn get_password(&self) -> &'a str
     {
         // return password reference
         self.password
