@@ -38,7 +38,7 @@ impl Info
     fn contains_uppercase(password:&Password) -> bool
     {
         // iterate over password characters
-        for ch in password.password().char_indices()
+        for ch in password.get_password().char_indices()
         {
             // check if character is uppercase
             if ch.1.is_uppercase()
@@ -55,7 +55,7 @@ impl Info
     fn contains_lowercase(password:&Password) -> bool
     {
         // iterate over password characters
-        for ch in password.password().char_indices()
+        for ch in password.get_password().char_indices()
         {
             // check if character is lowercase
             if ch.1.is_lowercase()
@@ -72,7 +72,7 @@ impl Info
     fn contains_digits(password:&Password) -> bool
     {
         // iterate over password characters
-        for ch in password.password().char_indices()
+        for ch in password.get_password().char_indices()
         {
             // check if character is a digit
             if ch.1.is_digit(10)
@@ -89,7 +89,7 @@ impl Info
     fn contains_special_chars(password:&Password) -> bool
     {
         // iterate over password characters
-        for ch in password.password().char_indices()
+        for ch in password.get_password().char_indices()
         {
             // check if character is a special character
             if ch.1.is_ascii_punctuation()
