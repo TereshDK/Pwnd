@@ -14,8 +14,12 @@ mod score;
 use crate::score::Score;
 // import report
 mod report;
+// import pwned
+mod pwned;
+use crate::pwned::Pwned;
 
-fn main()
+#[tokio::main]
+async fn main()
 {
     // prompt user to enter password
     print!("{} ", "Enter password: ".bright_blue());
@@ -27,8 +31,8 @@ fn main()
     // print password
     print!("{} {} {}\n",
         "You entered:".bright_green(),
-        password.password(),
-        format!("{} {}", "of length".bright_green(), password.size()));
+        password.get_password(),
+        format!("{} {}", "of length".bright_green(), password.get_size()));
     println!();
     // store password info
     let info:Info = Info::new(&password);
@@ -36,10 +40,55 @@ fn main()
     let score:Score = Score::new(&password, &info);
     // print score report
     report::pretty_score_report(&score);
-    // print new line
     println!();
     // print info report
     report::pretty_info_report(&score, &info);
+    println!();
+
+    // HIBP API
+    print!("{} ", "Checking HaveIBeenPwned database".bright_yellow());
+    stdout().flush().expect("[ERROR] failed to flush stdout");
+
+    // initialize Pwned API client
+    match Pwned::new()
+    {
+        // successfully initilizaed client
+        Ok(pwned) =>
+        {
+            // asynchronously check if the password has been breached
+            match pwned.check(&password).await
+            {
+                // status is ok
+                Ok(0) =>
+                {
+                    // print that password was not found in data breaches
+                    println!("\n{}", "✓ Password not found in known data breaches".bright_green());
+                }
+                // password breached
+                Ok(count) =>
+                {
+                    // print password known to be breached with total breaches
+                    println!("\n{}",
+                        format!("[WARNING]: Password found in {} known data breaches!", count)
+                            .bright_red()
+                            .bold()
+                    );
+                }
+                // request error
+                Err(e) =>
+                {
+                    // print request failwith error
+                    eprintln!("\n{}", format!("[ERROR] Network request failed: {}", e).bright_red());
+                }
+            }
+        }
+        // failure to initilize client
+        Err(e) =>
+        {
+            // print error
+            eprintln!("\n{}", format!("[ERROR] Failed to initialize Pwned client: {}", e).bright_red());
+        }
+    }
 }
 
 // reads a line from stdin and returns it as a String
