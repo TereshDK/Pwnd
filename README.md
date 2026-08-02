@@ -21,7 +21,7 @@ Clone the repository
 ```powershell
 # Clone the repository
 git clone [https://github.com/TereshDK/Password-Strength-Checker.git](https://github.com/TereshDK/Password-Strength-Checker.git)
-cd ferro
+cd Password-Strength-Checker
 ```
 Run
 ```powershell
