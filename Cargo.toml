@@ -1,5 +1,5 @@
 [package]
-name = "password_strength_checker"
+name = "pwned"
 version = "0.1.0"
 edition = "2024"
 
