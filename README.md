@@ -1,8 +1,8 @@
-# Password-Strength-Checker 🔑
+# Pwnd 🔑
 
 A cybersecurity project to learn cryptographic hashing and working with REST APIs.
 
-> A password strength analyzer written in Rust. Analyzes password characteristics, assigns a score, and checks for breaches.
+> Get instant entropy scoring and k-anonymity breach audits, built in Rust.
 
 ## 🚚 Features
 - Password strength scoring
@@ -20,7 +20,7 @@ A cybersecurity project to learn cryptographic hashing and working with REST API
 Clone the repository
 ```powershell
 # Clone the repository
-git clone [https://github.com/TereshDK/Password-Strength-Checker.git](https://github.com/TereshDK/Password-Strength-Checker.git)
+git clone [https://github.com/TereshDK/Pwnd.git](https://github.com/TereshDK/Pwnd.git)
 cd Password-Strength-Checker
 ```
 Run
