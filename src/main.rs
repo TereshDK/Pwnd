@@ -22,7 +22,7 @@ use crate::pwned::Pwned;
 async fn main()
 {
     // prompt user to enter password
-    print!("{} ", "Enter password: ".bright_blue());
+    print!("{} ", "Enter password:".bright_blue());
     // flush stdout to ensure prompt is displayed before input
     stdout().flush().expect("[ERROR] failed to flush stdout");
     // call read_line to get user input
